@@ -1,7 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
+import "./App.scss";
 import MyComponent from "./components/MyComponent";
 import React from "react"; // viết theo kiểu class nên cần React để kế thừa
 class App extends React.Component {
