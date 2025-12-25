@@ -1,45 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.scss";
-import MyComponent from "./components/MyComponent";
-import React from "react"; // viết theo kiểu class nên cần React để kế thừa
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <MyComponent></MyComponent>
+import { Link, Outlet } from "react-router-dom";
+import Header from "./components/header/Header";
+const App = () => {
+  return (
+    <div className="app-container">
+      <div className="header-container">
+        <Header />
       </div>
-    );
-  }
-}
-
-// function App() {
-//   const [count, setCount] = useState(0);
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   );
-// }
+      <div className="main-container">
+        <div className="sidenav-container"></div>
+        <div className="app-content">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
+};
 export default App;
