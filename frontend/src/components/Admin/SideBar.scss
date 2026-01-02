@@ -1,0 +1,49 @@
+.app-sidebar {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  height: 100vh;
+  .css-dip3t8 {
+    background-color: #f5f6fa;
+  }
+  .ps-menu-button {
+    &:hover {
+      background-color: #c0c0c0;
+    }
+  }
+  .sidebar-header {
+    padding: 24px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Footer */
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  /* Badge (giữ giống bản cũ) */
+  .badge {
+    padding: 2px 6px;
+    font-size: 10px;
+    border-radius: 4px;
+  }
+
+  .badge.red {
+    background: #e74c3c;
+  }
+
+  .badge.yellow {
+    background: #f1c40f;
+    color: #000;
+  }
+}

@@ -11,6 +11,7 @@
   // padding: 2rem;
   // text-align: center;
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .container,
   .container-lg,
@@ -57,30 +58,32 @@
 
 .homepage-container {
   .container {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 60px 0;
-    .homepage-content {
-      padding: 90px;
-      .title-header h1 {
-        font-size: 40px;
-      }
-      .description {
-        font-size: 20px;
-      }
-      .getstarted {
-        margin: 12px;
+    .row {
+      position: relative;
+      // display: flex;
+      // justify-content: space-around;
+      align-items: center;
+      padding: 60px 0;
+      .homepage-content {
+        padding: 90px;
+        .title-header h1 {
+          font-size: 40px;
+        }
+        .description {
+          font-size: 20px;
+        }
+        .getstarted {
+          margin: 12px 0;
 
-        .btn-getstarted {
-          outline: none;
-          border: 1px solid rgb(36, 36, 36);
-          background-color: rgb(116, 115, 115);
-          color: white;
-          font-size: 18px;
-          &:hover {
-            background-color: black;
+          .btn-getstarted {
+            outline: none;
+            border: 1px solid rgb(36, 36, 36);
+            background-color: rgb(116, 115, 115);
+            color: white;
+            font-size: 18px;
+            &:hover {
+              background-color: black;
+            }
           }
         }
       }
@@ -90,5 +93,6 @@
 
 .homepage-container {
   background: url("./assets/backGroungHomePage.jpg") center / cover no-repeat;
-  height: 100vh;
+  // height: 100vh;
+  min-height: 100vh;
 }
