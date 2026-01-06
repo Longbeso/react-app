@@ -1,14 +1,27 @@
-const TableUser = (props) => {
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import ReactPaginate from "react-paginate";
+
+const TableUserPaginate = (props) => {
   const {
     listUsers,
     handleClickBtnUpdate,
     handleClickBtnView,
     handleClickBtnDelete,
+    fetchListUserWithPaginate,
+    pageCount,
+    nativePage,
+    setNativePage,
   } = props;
+  const [itemOffset, setItemOffset] = useState(0);
+  // const [pageCount, setPageCount] = useState(0);
 
-  // componentDidMount
+  const handlePageClick = (event) => {
+    console.log(`User requested page number ${event.selected}`);
+    fetchListUserWithPaginate(+event.selected + 1);
+    setNativePage(+event.selected + 1);
+  };
 
-  // hàm được chạy sau khi DOM được render
   return (
     <>
       <table className="table table table-hover table-bordered align-middle ">
@@ -45,7 +58,6 @@ const TableUser = (props) => {
                       className="btn btn-warning mx-3"
                       onClick={() => {
                         handleClickBtnUpdate(user);
-                        s;
                       }}
                     >
                       Update
@@ -70,8 +82,35 @@ const TableUser = (props) => {
           )}
         </tbody>
       </table>
+      <ReactPaginate
+        // breakLabel="..."
+        // nextLabel="next >"
+        // onPageChange={handlePageClick}
+        // pageRangeDisplayed={5}
+        // pageCount={5}
+        // previousLabel="< previous"
+        // renderOnZeroPageCount={null}
+        previousLabel="previous"
+        nextLabel="next"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        pageCount={pageCount}
+        pageRangeDisplayed={4}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageClick}
+        containerClassName="pagination justify-content-center"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        activeClassName="active"
+        forcePage={nativePage - 1}
+      />
     </>
   );
 };
 
-export default TableUser;
+export default TableUserPaginate;

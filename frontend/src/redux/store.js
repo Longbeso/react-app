@@ -1,1 +1,8 @@
-// sau này cấu hình sau
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./slices/userSlice";
+
+export const store = configureStore({
+  reducer: {
+    user: userReducer, // key = tên state trong store
+  },
+});

@@ -3,10 +3,17 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { CiCirclePlus } from "react-icons/ci";
 import { toast } from "react-toastify";
-import { postCreateNewUser } from "../../../services/appServices.jsx";
+import { putUpdateUser } from "../../../services/apiServices.jsx";
 import _ from "lodash"; // thư viện
 const ModalUpdateUser = (props) => {
-  const { showModalUpdateUser, setShowModalUpdateUser, dataUpdate } = props;
+  const {
+    showModalUpdateUser,
+    setShowModalUpdateUser,
+    dataUpdate,
+    fetchListUserWithPaginate,
+
+    nativePage,
+  } = props;
 
   const handleClose = () => {
     setShowModalUpdateUser(false);
@@ -23,33 +30,17 @@ const ModalUpdateUser = (props) => {
     }
   };
 
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
-
   const handleSubmitUpdateUser = async () => {
-    const isValidateEmail = validateEmail(email);
-    if (!isValidateEmail) {
-      toast.error("invalid email");
-      return;
-    }
-    if (!passWord) {
-      toast.error("invalid password");
-      return;
-    }
-
-    let data = await postCreateNewUser(email, passWord, userName, role, image);
+    let data = await putUpdateUser(dataUpdate?.id, userName, role, image);
     if (data && data.EC === 0) {
-      toast.success("create successed");
+      toast.success(data.EM);
       handleClose();
-      await fetchListUser();
+
+      await fetchListUserWithPaginate(nativePage);
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
+      console.log(data.EM);
     }
   };
   const [email, setEmail] = useState("");
@@ -59,7 +50,6 @@ const ModalUpdateUser = (props) => {
   const [role, setRole] = useState("USER");
   const [previewImage, setPreviewImage] = useState("");
   useEffect(() => {
-    console.log("this is dataupdate in useEffect", dataUpdate);
     if (!_.isEmpty(dataUpdate)) {
       // update State
       setEmail(dataUpdate.email);

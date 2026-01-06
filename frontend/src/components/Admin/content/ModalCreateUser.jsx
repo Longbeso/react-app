@@ -3,9 +3,15 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { CiCirclePlus } from "react-icons/ci";
 import { toast } from "react-toastify";
-import { postCreateNewUser } from "../../../services/appServices.jsx";
+import { postCreateNewUser } from "../../../services/apiServices.jsx";
 const ModalCreateUser = (props) => {
-  const { showModalCreateUser, setShowModalCreateUser, fetchListUser } = props;
+  const {
+    showModalCreateUser,
+    setShowModalCreateUser,
+    fetchListUserWithPaginate,
+    nativePage,
+    setNativePage,
+  } = props;
 
   const handleClose = () => {
     setShowModalCreateUser(false);
@@ -63,7 +69,8 @@ const ModalCreateUser = (props) => {
     if (data && data.EC === 0) {
       toast.success("create successed");
       handleClose();
-      await fetchListUser();
+      setNativePage(1);
+      await fetchListUserWithPaginate(1);
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);

@@ -41,3 +41,50 @@
     }
   }
 }
+
+.modal-view-user {
+  .img-preview {
+    border: 1px dashed #bdbdbd;
+    height: 150px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b0b0b0;
+  }
+  .img-view-container {
+    display: flex;
+    justify-content: center;
+    .img-view {
+      object-fit: cover;
+      border: 1px solid black;
+      height: 150px;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+  .view-element {
+    display: flex;
+    border: 1px solid rgb(165, 165, 165);
+    border-radius: 6px;
+    padding: 8px 12px;
+    align-items: center;
+    background-color: #f5f1ff;
+    .form-label {
+      min-width: 100px;
+      margin-bottom: 0;
+    }
+  }
+  .modal-body {
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
